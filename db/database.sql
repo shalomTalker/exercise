@@ -1,3 +1,51 @@
+
+
+
+SELECT 
+
+    c.name as client_name,
+    c.phone,
+    b.name as book_name,
+    b.author_name,
+    b.price,
+    p.buy_date
+FROM purchases p
+JOIN clients c ON c.id = p.user_id
+JOIN books b ON b.id = p.book_id
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- ----------------------------
+-- Table structure for series
+-- ----------------------------
+CREATE TABLE `rating`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userID` int (11) NULL DEFAULT NULL,
+  `episodeID` int (11) NULL DEFAULT NULL,
+  `rating` bit NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `user_if_fk`(`userID`) USING BTREE,
+  INDEX `episode_if_fk`(`episodeID`) USING BTREE,
+  CONSTRAINT `episode_if_fk` FOREIGN KEY (`episodeID`) REFERENCES `episodes` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `user_if_fk` FOREIGN KEY (`userID`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+);
+
 -- ----------------------------
 -- Table structure for series
 -- ----------------------------
